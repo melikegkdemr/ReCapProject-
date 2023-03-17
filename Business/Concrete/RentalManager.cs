@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -25,8 +26,6 @@ namespace Business.Concrete
 
             _rentalDal.Add(rental);
             return new SuccessResult("Koşulu geçerek eklendi.");
-
-           
             
         }
 
@@ -38,7 +37,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Rental>> GetAll()
         {
-             return new SuccessDataResult<List<Rental>>();
+             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(), Messages.RentalListed);
         }
 
         public IResult Update(Rental rental)
