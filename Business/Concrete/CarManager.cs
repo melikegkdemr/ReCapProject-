@@ -25,7 +25,6 @@ namespace Business.Concrete
         [ValidationAspect(typeof(CarValidator))] //Add metodunu doğrula carvalidator daki kurallara göre
         public IResult Add(Car car)
         {
-
             _carDal.Add(car);
             return new SuccessResult(Messages.CarAdded);
         }

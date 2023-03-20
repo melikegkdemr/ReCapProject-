@@ -17,5 +17,7 @@ namespace Business.Constants
         public static string BrandUpdated = "Marka güncellendi";
 
         public static string RentalListed = "Kiralamalar listelendi";
+
+        public static string CarImageExceeded = "Bir aracın maksimum 5 görseli olabilir.";
     }
 }

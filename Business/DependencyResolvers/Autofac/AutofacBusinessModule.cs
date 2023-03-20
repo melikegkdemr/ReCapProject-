@@ -3,6 +3,7 @@ using Autofac.Extras.DynamicProxy;
 using Business.Abstract;
 using Business.Concrete;
 using Castle.DynamicProxy;
+using Core.Utilities.Helpers.FileHelper;
 using Core.Utilities.Interceptors;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
@@ -16,6 +17,9 @@ namespace Business.DependencyResolvers.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<CarImageManager>().As<ICarImageService>().SingleInstance();
+            builder.RegisterType<EntityFrameworkCarImageDal>().As<ICarImageDal>().SingleInstance();
+
             builder.RegisterType<CarManager>().As<ICarService>().SingleInstance();
             builder.RegisterType<EntityFrameworkCarDal>().As<ICarDal>().SingleInstance();
 
@@ -30,6 +34,8 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
             builder.RegisterType<EntityFrameworkUserDal>().As<IUserDal>().SingleInstance();
+
+            builder.RegisterType<FileHelper>().As<IFileHelper>().SingleInstance();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
